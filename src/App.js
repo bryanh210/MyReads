@@ -1,5 +1,5 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -10,8 +10,34 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+    books: [],
+    wantToRead: [],
+    read:[],
+    currentlyReading: []
+
   }
+
+componentDidMount(){
+  BooksAPI.getAll().then((books) =>{
+    this.state({books})
+  })
+}
+
+//backend update
+//loop thru state object. If shelf matches, then add that in. otherwise, skip
+updateBooks = (book, shelf) =>{
+  bookAPI.update(book, shelf).then((book, shelf)=>{
+    this.setState((state)=>({
+      for(let state of this.state){
+        if(shelf === state){
+          state: shelf
+        }
+      }
+    })
+  })
+}
+
 
   render() {
     return (
@@ -80,7 +106,7 @@ class BooksApp extends React.Component {
                               </select>
                             </div>
                           </div>
-                          <div className="book-title">Ender's Game</div>
+                          <div className="book-title">Enders Game</div>
                           <div className="book-authors">Orson Scott Card</div>
                         </div>
                       </li>
