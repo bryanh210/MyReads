@@ -1,8 +1,8 @@
 import React from 'react'
-//import { Link } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import DisplayBooks from './DisplayBooks'
+import BookShelves from './BookShelves'
 
 class BooksApp extends React.Component {
   state = {
@@ -45,14 +45,12 @@ UpdateBooks = (book, shelf) =>{
 
 render() {
   return (
-    <div>
-      <DisplayBooks
-        books={this.state.books}
-      />
-
+    <div className="app">
+      <Route path="/" component={BookShelves} />
     </div>
   )
 }
 }
+
 
 export default BooksApp
