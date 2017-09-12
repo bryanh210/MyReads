@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App'
+import BookShelf from './BookShelf'
 
 //this component is to render the different shelves
 class BookShelves extends Component{
@@ -23,7 +24,7 @@ class BookShelves extends Component{
         id: 'currentlyreading',
         title: 'Currently Reading',
         bookOnShelf: books.filter((book)=>{
-          book.shelf === 'currentlyReading'
+          return (book.shelf === 'currentlyReading')
         })
       },
 
@@ -31,7 +32,7 @@ class BookShelves extends Component{
         id: 'wantToRead',
         title: 'Want To Read',
         bookOnShelf: books.filter((book)=>{
-          book.shelf === 'wantToRead'
+          return (book.shelf === 'wantToRead')
         })
       },
 
@@ -39,7 +40,7 @@ class BookShelves extends Component{
         id: 'read',
         title: 'Read',
         bookOnShelf: books.filter((book)=>{
-          book.shelf === 'read'
+          return (book.shelf === 'read')
         })
       }
   ]
@@ -54,7 +55,16 @@ class BookShelves extends Component{
             <div className="bookshelf"  />
             {Shelves.map((shelf) =>{
               return(
-              <h2 className="bookshelf-title" title={Shelves.title} key={shelf.id} book={Shelves.bookOnShelf} books={books}>{shelf.title}</h2>
+              <BookShelf
+               className="bookshelf-title"
+               title={Shelves.title}
+               key={shelf.id}
+               book={Shelves.bookOnShelf}
+               books={books}
+               updateBookShelf={updateBookShelf}
+               >{shelf.title}
+
+              </BookShelf>
               )
             })}
           </div>

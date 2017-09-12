@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import App from './App'
-import BookShelves from './Bookshelves'
+import BookShelves from './BookShelves'
 
 class BookShelf extends Component{
 
@@ -14,15 +14,17 @@ class BookShelf extends Component{
       <div className="bookshelf-books">
         <ol className="books-grid">
           <li>
-            <div className="book">
+
                 books.map((book) =>{
-                  return(
+                   (
+                    <div className="book"
+                    title={title}
+                    id={id}
+                    book={book}
+                    updateBookShelf={updateBookShelf}/>
+              )
+            })
 
-
-
-        )
-      })
-            </div>
           </li>
           </ol>
       </div>
