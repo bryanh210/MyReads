@@ -16,25 +16,23 @@ class BookShelf extends Component{
     const { title, id, isRightBook, books, updateBookShelf, shelf} = this.props
 
     return(
+
       <div className="bookshelf-books">
-        <ol className="books-grid">
-          <li>
-                <div>
-                 {shelf.title}
-                {books.map((book1) =>{
-                   return (
-                     <div className="book-list-item" key ={ book1.id}>
-
-                      {book1.title}
-
-
-                       </div>
-
-              )
-            })}
-                </div>
-
-          </li>
+        <div className="bookshelf-title">{this.props.children}</div>
+          <ol className="books-grid">
+            <li>
+                  <div>
+                  {books.map((book1) =>{
+                    if(book1.shelf===shelf.id){
+                      return (
+                        <div className="book-list-item" key ={ book1.id}>
+                         {book1.title}
+                        </div>
+                        )
+                    }
+              })}
+                  </div>
+            </li>
           </ol>
       </div>
 

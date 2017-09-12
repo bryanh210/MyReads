@@ -50,14 +50,12 @@ class BookShelves extends Component{
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <div className="list-books-content">
-          <div>
-            <div className="bookshelf"  />
+            <div className="list-books-content" >
               <div>
                 {Shelves.map((shelf) =>{
                   return(
                   <BookShelf
-                   className="bookshelf-title"
+                   className="bookshelf-content"
                    shelf={shelf}
                    title={shelf.title}
                    key={shelf.id}
@@ -66,14 +64,12 @@ class BookShelves extends Component{
                    updateBookShelf={updateBookShelf}
                    >{shelf.title}
 
+
                   </BookShelf>
               )
             })}
               </div>
           </div>
-        </div>
-
-
       </div>
     )
   }
