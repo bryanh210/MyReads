@@ -22,6 +22,7 @@ componentDidMount(){
   BooksAPI.getAll().then((books) =>{
     this.setState({books})
     console.log(books)
+    console.log(books[1].shelf)
   })
 }
 
@@ -34,7 +35,7 @@ componentDidMount(){
 //       b.id !== book.id).concat([book])
 //   }); }) }
 
-UpdateBooks = (book, shelf) =>{
+updateBookShelf = (book, shelf) =>{
   BooksAPI.update(book, shelf).then(()=>{
     book.shelf = shelf;
     this.setState({
@@ -45,14 +46,18 @@ UpdateBooks = (book, shelf) =>{
 
 render() {
   return (
-    <div className="app">
+    <div >
+        <Route exact path='/' render={() => (
+          <BookShelves
+            books={this.state.books}
 
-        <Route path="/" component={BookShelves} />
-
+          />
+     )}/>
     </div>
   )
 }
 }
+
 
 
 export default BooksApp
