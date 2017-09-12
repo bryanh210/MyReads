@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import App from './App'
-import BookShelves from './BookShelves'
+// import App from './App'
+// import BookShelves from './BookShelves'
 
 class BookShelf extends Component{
 
@@ -8,22 +8,24 @@ class BookShelf extends Component{
 
 //if statement in here
   render(){
-    const { title, id, book, books, updateBookShelf} = this.props
+    const { title, id, isRightBook, books, updateBookShelf} = this.props
 
     return(
       <div className="bookshelf-books">
         <ol className="books-grid">
           <li>
-
-                books.map((book) =>{
-                   (
-                    <div className="book"
+                <div>
+                {books.map((book1) =>{
+                   return (
+                    <div className="book-list-item"
+                    key={book1.id}
                     title={title}
                     id={id}
-                    book={book}
+                    isRightBook={isRightBook}
                     updateBookShelf={updateBookShelf}/>
               )
-            })
+            })}
+                </div>
 
           </li>
           </ol>
@@ -32,3 +34,5 @@ class BookShelf extends Component{
     )
   }
 }
+
+export default BookShelf

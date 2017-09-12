@@ -53,20 +53,22 @@ class BookShelves extends Component{
         <div className="list-books-content">
           <div>
             <div className="bookshelf"  />
-            {Shelves.map((shelf) =>{
-              return(
-              <BookShelf
-               className="bookshelf-title"
-               title={Shelves.title}
-               key={shelf.id}
-               book={Shelves.bookOnShelf}
-               books={books}
-               updateBookShelf={updateBookShelf}
-               >{shelf.title}
+              <div>
+                {Shelves.map((shelf) =>{
+                  return(
+                  <BookShelf
+                   className="bookshelf-title"
+                   title={Shelves.title}
+                   key={shelf.id}
+                   isRightBook={Shelves.bookOnShelf}
+                   books={books}
+                   updateBookShelf={updateBookShelf}
+                   >{shelf.title}
 
-              </BookShelf>
+                  </BookShelf>
               )
             })}
+              </div>
           </div>
         </div>
 
