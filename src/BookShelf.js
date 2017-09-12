@@ -19,10 +19,11 @@ class BookShelf extends Component{
                    return (
                     <div className="book-list-item"
                     key={book1.id}
-                    title={title}
-                    id={id}
+                    bookTitle={book1.title}
+
                     isRightBook={isRightBook}
-                    updateBookShelf={updateBookShelf}/>
+                    updateBookShelf={updateBookShelf}>{book1.title}</div>
+                      
               )
             })}
                 </div>
