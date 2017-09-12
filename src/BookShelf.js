@@ -30,9 +30,6 @@ class BookShelf extends Component{
                         </div>
                         )
                     }
-                    else{
-                      console.log('Nope')
-                    }
               })}
                   </div>
             </li>

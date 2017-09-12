@@ -21,7 +21,7 @@ class BookShelves extends Component{
 
   const Shelves = [
       {
-        id: 'currentlyreading',
+        id: 'currentlyReading',
         title: 'Currently Reading',
         bookOnShelf: books.filter((book)=>{
           return (book.shelf === 'currentlyReading')
