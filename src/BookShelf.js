@@ -20,12 +20,13 @@ class BookShelf extends Component{
         <ol className="books-grid">
           <li>
                 <div>
+                 {shelf.title}
                 {books.map((book1) =>{
                    return (
                      <div className="book-list-item" key ={ book1.id}>
-                      {shelf.title}
+
                       {book1.title}
-                       {isRightBook}
+
 
                        </div>
 
