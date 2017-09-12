@@ -3,12 +3,17 @@ import React, { Component } from 'react'
 // import BookShelves from './BookShelves'
 
 class BookShelf extends Component{
-
+  // <className="book-list-item"
+  // key={book1.id}
+  // bookTitle={book1.title}
+  //
+  // isRightBook={book1.isRightBook}
+  // updateBookShelf={updateBookShelf}>{book1.title}</div>
 
 
 //if statement in here
   render(){
-    const { title, id, isRightBook, books, updateBookShelf} = this.props
+    const { title, id, isRightBook, books, updateBookShelf, shelf} = this.props
 
     return(
       <div className="bookshelf-books">
@@ -17,13 +22,13 @@ class BookShelf extends Component{
                 <div>
                 {books.map((book1) =>{
                    return (
-                    <div className="book-list-item"
-                    key={book1.id}
-                    bookTitle={book1.title}
+                     <div className="book-list-item" key ={ book1.id}>
+                      {shelf.title}
+                      {book1.title}
+                       {isRightBook}
 
-                    isRightBook={isRightBook}
-                    updateBookShelf={updateBookShelf}>{book1.title}</div>
-                      
+                       </div>
+
               )
             })}
                 </div>

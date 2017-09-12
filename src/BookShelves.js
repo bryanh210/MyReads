@@ -58,9 +58,10 @@ class BookShelves extends Component{
                   return(
                   <BookShelf
                    className="bookshelf-title"
-                   title={Shelves.title}
+                   shelf={shelf}
+                   title={shelf.title}
                    key={shelf.id}
-                   isRightBook={Shelves.bookOnShelf}
+                   isRightBook={shelf.bookOnShelf}
                    books={books}
                    updateBookShelf={updateBookShelf}
                    >{shelf.title}
