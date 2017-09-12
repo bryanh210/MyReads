@@ -50,7 +50,7 @@ render() {
         <Route exact path='/' render={() => (
           <BookShelves
             books={this.state.books}
-
+            updateBookShelf={this.updateBookShelf}
           />
      )}/>
     </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import './App.css'
+import './App'
 
 //this component is to render the different shelves
 class BookShelves extends Component{
@@ -16,7 +16,7 @@ class BookShelves extends Component{
 //only include the part where it displays books
   render(){
 
-    const {books} = this.props
+    const {books, updateBookShelf} = this.props
 
   const Shelves = [
       {
@@ -51,10 +51,10 @@ class BookShelves extends Component{
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf" key= {Shelves.id} />
+            <div className="bookshelf"  />
             {Shelves.map((shelf) =>{
               return(
-              <h2 className="bookshelf-title">{shelf.title}</h2>
+              <h2 className="bookshelf-title" title={Shelves.title} key={shelf.id} book={Shelves.bookOnShelf} books={books}>{shelf.title}</h2>
               )
             })}
           </div>
