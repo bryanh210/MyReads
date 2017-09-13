@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App'
+import App from './App'
 import BookShelf from './BookShelf'
 
 //this component is to render the different shelves
@@ -57,7 +57,7 @@ class BookShelves extends Component{
                   <BookShelf
                    className="bookshelf-content"
                    shelf={shelf}
-                   title={shelf.title}
+                   shelfTitle={shelf.title}
                    key={shelf.id}
                    isRightBook={shelf.bookOnShelf}
                    books={books}

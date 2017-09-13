@@ -23,7 +23,7 @@ componentDidMount(){
     this.setState({books})
     console.log(books)
     console.log(books[1].shelf)
-    
+
   })
 }
 
