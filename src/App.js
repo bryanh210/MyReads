@@ -22,7 +22,8 @@ componentDidMount(){
   BooksAPI.getAll().then((books) =>{
     this.setState({books})
     console.log(books)
-    console.log(books[1].shelf)
+    console.log(books[0].shelf)
+    console.log(books[0].imageLinks.thumbnail)
 
   })
 }
