@@ -19,7 +19,7 @@ class BookShelf extends Component{
     return(
 
       <div className="bookshelf-books">
-        <div className="bookshelf-title">{this.props.children}</div>
+        <h2 className="bookshelf-title">{this.props.children}</h2>
           <ol className="books-grid">
             <li>
                   <div>
@@ -27,7 +27,7 @@ class BookShelf extends Component{
                     if(book1.shelf===shelf.id){
                       return (
                         <Book
-                        className="book"
+                        
                         key={ book1.id}
                         shelfTitle={ shelfTitle}
                         isRightBook={isRightBook}

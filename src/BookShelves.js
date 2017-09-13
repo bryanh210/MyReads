@@ -55,7 +55,7 @@ class BookShelves extends Component{
                 {Shelves.map((shelf) =>{
                   return(
                   <BookShelf
-                   className="bookshelf-content"
+                   
                    shelf={shelf}
                    shelfTitle={shelf.title}
                    key={shelf.id}
