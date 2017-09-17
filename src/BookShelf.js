@@ -27,7 +27,7 @@ class BookShelf extends Component{
                     if(book1.shelf===shelf.id){
                       return (
                         <Book
-                        
+
                         key={ book1.id}
                         shelfTitle={ shelfTitle}
                         isRightBook={isRightBook}
