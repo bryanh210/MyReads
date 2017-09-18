@@ -46,7 +46,7 @@ updateBookShelf = (book, shelf) =>{
 
 render() {
   return (
-    <div >
+    <div>
         <Route exact path='/' render={() => (
           <BookShelves
             books={this.state.books}
@@ -60,6 +60,11 @@ render() {
          updateBookShelf={this.updateBookShelf}
        />
   )}/>
+
+  <div className="open-search">
+    <a>Add a book</a>
+  </div>
+
 </div>
 
 
