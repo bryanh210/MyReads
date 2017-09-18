@@ -3,6 +3,7 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import * as BooksAPI from './BooksAPI'
 import { Link } from 'react-router-dom'
+import  Book from './Book'
 
 
 class Search extends React.Component{
@@ -25,7 +26,11 @@ Search = (query) => {
       bookResults.sort(sortBy('title'))
       this.setState({bookResult: bookResults})
       console.log('Found book(s)')
+      // console.log(bookResults)
     }
+  }).catch((error) => {
+    //catch any errors in console
+    console.error(error)
   })
 }
 
@@ -47,7 +52,7 @@ Search = (query) => {
   //       showingBooks = books
   //     }
   // showingBooks.sort(sortBy('title'));
-
+console.log(this.state.bookResult)
 
     return(
 
@@ -67,7 +72,7 @@ Search = (query) => {
           }
             <input
               type="text"
-              placeholder="Search by title or author"
+              placeholder="Search by title"
               value={query}
               onChange={(event) => this.Search(event.target.value)}
             />
@@ -77,14 +82,23 @@ Search = (query) => {
 
 
       <div className="search-books-results">
+        <ol className="books-grid">
           {bookResult.map((book) =>{
-        <ol className="books-grid"
-          key={book.id}
-          >
-            <div className="book-title">{book.title}</div>
-        </ol>
-      })}
-    </div>
+          return (<li key={book.id} className="book">
+            <Book
+              key={book.id}
+              books={books}
+              updateBookShelf={updateBookShelf}
+              bookTitle={book.title}
+              book={book}>
+            </Book>
+            </li>
+            )
+    })
+  }
+      </ol>
+</div>
+
 
 
   </div>
