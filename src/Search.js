@@ -23,7 +23,7 @@ Search = (query) => {
       this.setState({bookResult: []})
     } else{
       bookResults.sort(sortBy('title'))
-      this.setState({bookResult: [bookResults]})
+      this.setState({bookResult: bookResults})
       console.log('Found book(s)')
     }
   })
@@ -79,7 +79,7 @@ Search = (query) => {
       <div className="search-books-results">
           {bookResult.map((book) =>{
         <ol className="books-grid"
-          key="book.id"
+          key={book.id}
           >
             <div className="book-title">{book.title}</div>
         </ol>
