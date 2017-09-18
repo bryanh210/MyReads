@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import * as BooksAPI from './BooksAPI'
+import { Link } from 'react-router-dom'
 
 
 class Search extends React.Component{
@@ -30,28 +31,30 @@ Search = (query) => {
 clearQuery = (query) =>{
   this.setState({query: ''})
 }
+
+//omit the a, replace it with Link
   render(){
 
     const {books, updateBookShelf, wholeLibrary} = this.props
     const {query, bookResult} = this.state
-
-    let showingBooks;
-    if(query){
-      const match = new RegExp(escapeRegExp(this.state.query), 'i')
-      showingBooks = this.props.books.filter((book) =>{ return (match.test(book.title))})}
-      else{
-        showingBooks = books
-      }
-  showingBooks.sort(sortBy('title'));
+  //
+  //   let showingBooks;
+  //   if(query){
+  //     const match = new RegExp(escapeRegExp(this.state.query), 'i')
+  //     showingBooks = this.props.books.filter((book) =>{ return (match.test(book.title))})}
+  //     else{
+  //       showingBooks = books
+  //     }
+  // showingBooks.sort(sortBy('title'));
 
 
     return(
 
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search"
-            Link
-            to='/'>Close</a>
+          <Link className="close-search"
+
+            to='/'>Close</Link>
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -74,7 +77,7 @@ clearQuery = (query) =>{
 
 
       <div className="search-books-results">
-          {showingBooks.map((book) =>{
+          {bookResult.map((book) =>{
         <ol className="books-grid"
           key="book.id"
           style={{ width: 128, height: 193,
@@ -84,6 +87,11 @@ clearQuery = (query) =>{
         </ol>
       })}
     </div>
+
+    <div className="open-search">
+      <a>Add a book</a>
+    </div>
+
   </div>
 
     )
