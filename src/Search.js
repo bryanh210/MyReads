@@ -18,12 +18,13 @@ Search = (query) => {
   this.setState({query: query.trim() })
   BooksAPI.search(query.trim(), 50).then( (bookResults) =>{
     // if there's no book matching the query
-    if(!bookResults){
-      console.log('no books matching the query')
+    if(!bookResults || bookResults.error){
+      console.log('no books matching the query or error')
       this.setState({bookResult: []})
     } else{
-
-      this.setState({bookResult: bookResults})
+      bookResults.sort(sortBy('title'))
+      this.setState({bookResult: [bookResults]})
+      console.log('Found book(s)')
     }
   })
 }
@@ -79,8 +80,7 @@ Search = (query) => {
           {bookResult.map((book) =>{
         <ol className="books-grid"
           key="book.id"
-          style={{ width: 128, height: 193,
-            backgroundImage: `url(${book.imageLinks.thumbnail})`}}>
+          >
             <div className="book-title">{book.title}</div>
         </ol>
       })}
