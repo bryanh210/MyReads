@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelves from './BookShelves'
@@ -61,8 +61,9 @@ render() {
        />
   )}/>
 
+
   <div className="open-search">
-    <a>Add a book</a>
+    <Link to="/search">Add a book</Link>
   </div>
 
 </div>
