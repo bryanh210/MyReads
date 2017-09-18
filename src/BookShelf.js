@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import App from './App'
 // import BookShelves from './BookShelves'
 import Book from './Book'
+import {Link} from 'react-router-dom'
 
 class BookShelf extends Component{
   // <className="book-list-item"
@@ -17,6 +18,10 @@ class BookShelf extends Component{
     const { shelfTitle, isRightBook, books, updateBookShelf, shelf} = this.props
 
     return(
+<div>
+      <div className="open-search">
+        <Link to="/search">Add a book</Link>
+      </div>
 
       <div className="bookshelf-books">
         <h2 className="bookshelf-title">{this.props.children}</h2>
@@ -46,6 +51,8 @@ class BookShelf extends Component{
             </li>
           </ol>
       </div>
+</div>
+
 
     )
   }

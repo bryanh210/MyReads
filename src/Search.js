@@ -16,21 +16,21 @@ class Search extends React.Component{
 //.then isn't part of the API's promise. It's something we add on
 Search = (query) => {
   this.setState({query: query.trim() })
-  BooksAPI.search = (query.trim(), 50).then( (bookResults) =>{
+  BooksAPI.search(query.trim(), 50).then( (bookResults) =>{
     // if there's no book matching the query
     if(!bookResults){
       console.log('no books matching the query')
       this.setState({bookResult: []})
     } else{
-      bookResults.sort(sortBy('title'));
+
       this.setState({bookResult: bookResults})
     }
   })
 }
 
-clearQuery = (query) =>{
-  this.setState({query: ''})
-}
+// clearQuery = (query) =>{
+//   this.setState({query: ''})
+// }
 
 //omit the a, replace it with Link
   render(){
@@ -82,13 +82,12 @@ clearQuery = (query) =>{
           style={{ width: 128, height: 193,
             backgroundImage: `url(${book.imageLinks.thumbnail})`}}>
             <div className="book-title">{book.title}</div>
-            <div className="book-authors">{(book.authors.length >1) ? book.authors.join(" , "): book.authors}</div>
         </ol>
       })}
     </div>
 
-  
-</div>
+
+  </div>
 
     )
   }
