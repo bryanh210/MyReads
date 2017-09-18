@@ -1,18 +1,39 @@
 import React, {Component} from 'react'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
+import * as BooksAPI from './BooksAPI'
 
 
 class Search extends React.Component{
 
   state = {
-    query: ''
+    query: '',
+    bookResult: []
   }
 
+//Need to understand these things
+//.then isn't part of the API's promise. It's something we add on
+Search = (query) => {
+  this.setState({query: query.trim() })
+  BooksAPI.search = (query.trim(), 50).then( (bookResults) =>{
+    // if there's no book matching the query
+    if(!bookResults){
+      console.log('no books matching the query')
+      this.setState({bookResult: []})
+    } else{
+      bookResults.sort(sortBy('title'));
+      this.setState({bookResult: bookResults})
+    }
+  })
+}
+
+clearQuery = (query) =>{
+  this.setState({query: ''})
+}
   render(){
 
-    const {books, updateBookShelf} = this.props
-    const {query} = this.state
+    const {books, updateBookShelf, wholeLibrary} = this.props
+    const {query, bookResult} = this.state
 
     let showingBooks;
     if(query){
@@ -28,7 +49,9 @@ class Search extends React.Component{
 
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search">Close</a>
+          <a className="close-search"
+            Link
+            to='/'>Close</a>
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -43,7 +66,7 @@ class Search extends React.Component{
               type="text"
               placeholder="Search by title or author"
               value={query}
-              onChange={(event) => this.updateQuery(event.target.value)}
+              onChange={(event) => this.Search(event.target.value)}
             />
         </div>
       </div>

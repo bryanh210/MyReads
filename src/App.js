@@ -54,9 +54,9 @@ render() {
           />
      )}/>
 
-     <Route Search exact path='/search' render={() => (
-       <BookShelves
-         books={this.state.books}
+     <Route exact path='/search' render={() => (
+       <Search
+         wholeLibrary={this.state.books}
          updateBookShelf={this.updateBookShelf}
        />
   )}/>
