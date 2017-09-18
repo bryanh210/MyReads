@@ -13,49 +13,49 @@ class BookShelf extends Component{
   // updateBookShelf={updateBookShelf}>{book1.title}</div>
 
 
-//if statement in here
+  //if statement in here
   render(){
     const { shelfTitle, isRightBook, books, updateBookShelf, shelf} = this.props
 
     return(
-<div>
-      <div className="open-search">
-        <Link to="/search">Add a book</Link>
+      <div>
+        <div className="open-search">
+          <Link to="/search">Add a book</Link>
       </div>
 
       <div className="bookshelf-books">
         <h2 className="bookshelf-title">{this.props.children}</h2>
-          <ol className="books-grid">
-            <li>
-                  <div>
-                  {books.map((book1) =>{
-                    if(book1.shelf===shelf.id){
-                      return (
-                        <Book
+      <ol className="books-grid">
+        <li>
+          <div>
+            {books.map((book1) =>{
+              if(book1.shelf===shelf.id){
+                return (
+                  <Book
 
-                        key={ book1.id}
-                        shelfTitle={ shelfTitle}
-                        isRightBook={isRightBook}
-                        books={books}
-                        updateBookShelf={updateBookShelf}
-                        bookTitle={book1.title}
-                        book={book1}
+                    key={ book1.id}
+                    shelfTitle={ shelfTitle}
+                    isRightBook={isRightBook}
+                    books={books}
+                    updateBookShelf={updateBookShelf}
+                    bookTitle={book1.title}
+                    book={book1}
 
-                        >
-                         {book1.title}
-                        </Book>
-                        )
-                    }
+                    >
+                      {book1.title}
+                    </Book>
+                  )
+                }
               })}
-                  </div>
-            </li>
-          </ol>
+            </div>
+          </li>
+        </ol>
       </div>
-</div>
+    </div>
 
 
-    )
-  }
+  )
+}
 }
 
 export default BookShelf
